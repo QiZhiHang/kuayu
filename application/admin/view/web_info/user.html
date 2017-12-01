@@ -1,0 +1,107 @@
+				{include file="layout" /}
+						
+						<div class='row'>
+							<div class='col-xs-12'>
+								<form id='form' class='form-horizontal' role='form' action="{:url('WebInfo/user')}" method="post">
+									<div class='form-group'>
+										<label class='col-sm-3 control-label no-padding-right' for='form-field-1'>用户名</label>
+										<div class='col-sm-9'>
+											<input type='text' id='form-field-1' placeholder='管理员登录账户' class='col-xs-10' name="ad_username" value="{$info['ad_username']}" />
+										</div>
+									</div>
+
+									<div class='form-group'>
+										<label class='col-sm-3 control-label no-padding-right' for='password'>登录密码</label>
+										<div class='col-sm-9'>
+											<input type='password' id='password' placeholder='登录密码' class='col-xs-10' name="ad_password"/>
+										</div>
+									</div>
+									<div class='form-group'>
+										<label class='col-sm-3 control-label no-padding-right' for='password2'  >确认密码</label>
+										<div class='col-sm-9'>
+											<input type='password' id='password2' placeholder='确认密码' class='col-xs-10' name="password_confirm" />
+										</div>
+									</div>
+
+									<div class="modal-footer no-margin-top ">
+										
+										<button class='btn btn-sm btn-primary '>
+											<i class="ace-icon fa fa-floppy-o "></i>
+											保存</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+				<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+					<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+				</a>
+				</div><!-- /.main-container -->
+
+				<!-- basic scripts -->
+
+				<!--[if !IE]> -->
+				<script src="__admin__/assets/js/jquery-2.1.4.min.js"></script>
+
+				<!-- <![endif]-->
+
+				<!--[if IE]>
+				<script src="__admin__/assets/js/jquery-1.11.3.min.js"></script>
+				<![endif]-->
+				<script type="text/javascript">
+					if('ontouchstart' in document.documentElement) document.write("<script src='__admin__/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+				</script>
+				<script src="__admin__/assets/js/bootstrap.min.js"></script>
+
+				<!-- page specific plugin scripts -->
+				<script src="__admin__/lib/uploadPreview.min.js"></script>
+				<!--[if lte IE 8]>
+				<script src="__admin__/assets/js/excanvas.min.js"></script>
+				<![endif]-->
+				<script src="__admin__/assets/js/jquery-ui.custom.min.js"></script>
+				<script src="__admin__/assets/js/jquery.ui.touch-punch.min.js"></script>
+				<script src="__admin__/assets/js/jquery.easypiechart.min.js"></script>
+				<script src="__admin__/assets/js/jquery.sparkline.index.min.js"></script>
+
+				<!-- ace scripts -->
+				<script src="__admin__/assets/js/ace-elements.min.js"></script>
+				<script src="__admin__/assets/js/ace.min.js"></script>
+
+				<!-- inline scripts related to this page -->
+				<script>
+					$(function(){
+						//必须 页面元素点击关闭按钮后两个操作  重置 关闭
+						$('.close-this').click(function(){
+							$('#modal-table').hide();
+							$('#modal-table').removeClass('in');
+							$('.modal-backdrop.fade').removeClass('in').hide();
+							$('body').removeClass('modal-open');
+							$('#add').click(); //模拟点击事件 去掉遮罩 没找到原因
+						})
+					})
+					$('#logo').ace_file_input({
+						no_file:'No File ...',
+						btn_choose:'选择文件',
+						btn_change:'选择其他',
+						droppable:false,
+						onchange:null,
+						thumbnail:false //| true | large
+						//whitelist:'gif|png|jpg|jpeg'
+						//blacklist:'exe|php'
+						//onchange:''
+						//
+					});
+					//预览图片
+					window.onload = function () {
+						new uploadPreview({ UpBtn: "logo", DivShow: "updata_img", ImgShow: "imgShow" });
+					}
+					$('.remove').click(function(){
+						$('#imgShow').removeAttr('src');
+					})
+				</script>
+
+				{include file="common/foot" /}
+
